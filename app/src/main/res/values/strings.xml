@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZeTutorial</string>
+    <string name="description">About: </string>
 </resources>
