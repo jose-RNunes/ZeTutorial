@@ -8,7 +8,7 @@ import com.example.zetutorial.domain.repository.CharacterRepository
 class CharacterRepositoryImpl(
     private val characterResponseToModelMapper: CharacterResponseToModelMapper,
     private val marvelApi: MarvelApi
-): CharacterRepository {
+) : CharacterRepository {
 
     override suspend fun fetchCharacters(): List<CharacterModel> {
         return marvelApi.fetchCharacters().results.map { characterResponse ->

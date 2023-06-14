@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class CharacterViewModel(
     private val fetchCharacters: FetchCharacterUseCase,
     private val characterModelToUiModel: CharacterModelToUiModel
-    ): ViewModel() {
+) : ViewModel() {
 
     private val _state = MutableLiveData<CharacterState>()
     val state: LiveData<CharacterState> = _state
