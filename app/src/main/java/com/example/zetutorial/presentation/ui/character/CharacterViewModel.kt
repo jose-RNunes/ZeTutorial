@@ -17,7 +17,14 @@ class CharacterViewModel(
     private val _state = MutableLiveData<CharacterState>()
     val state: LiveData<CharacterState> = _state
 
-    fun init() {
+    fun handleAction(action: CharacterAction) {
+        when(action) {
+            is CharacterAction.GetActors -> getActors()
+            is CharacterAction.SelectCharacter -> setSelectCharacter(action.characterUiModel)
+        }
+    }
+
+    private fun getActors() {
         _state.value = getState().setShowLoading()
         viewModelScope.launch {
             runCatching {
@@ -33,7 +40,7 @@ class CharacterViewModel(
         }
     }
 
-    fun setSelectCharacter(characterUiModel: CharacterUiModel) {
+    private fun setSelectCharacter(characterUiModel: CharacterUiModel) {
         _state.value = getState().setSelectCharacter(characterUiModel)
     }
 
