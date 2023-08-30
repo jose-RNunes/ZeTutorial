@@ -5,10 +5,13 @@ import com.example.zetutorial.domain.model.CharacterModel
 import com.example.zetutorial.presentation.uimodel.CharacterUiModel
 import com.example.zetutorial.utils.Mapper
 import com.example.zetutorial.utils.ResourceProvider
+import javax.inject.Inject
 
-class CharacterModelToUiModel(
+interface CharacterModelToUiModelMapper : Mapper<CharacterModel, CharacterUiModel>
+
+class CharacterModelToUiModelMapperImpl @Inject constructor(
     private val resourceProvider: ResourceProvider
-) : Mapper<CharacterModel, CharacterUiModel> {
+) : CharacterModelToUiModelMapper {
 
     override fun converter(from: CharacterModel): CharacterUiModel {
         return CharacterUiModel(

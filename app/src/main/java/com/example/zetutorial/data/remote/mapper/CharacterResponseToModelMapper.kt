@@ -3,8 +3,11 @@ package com.example.zetutorial.data.remote.mapper
 import com.example.zetutorial.data.remote.response.CharacterResponse
 import com.example.zetutorial.domain.model.CharacterModel
 import com.example.zetutorial.utils.Mapper
+import javax.inject.Inject
 
-class CharacterResponseToModelMapper : Mapper<CharacterResponse, CharacterModel> {
+interface CharacterResponseToModelMapper : Mapper<CharacterResponse, CharacterModel>
+
+class CharacterResponseToModelMapperImpl @Inject constructor() : CharacterResponseToModelMapper {
 
     override fun converter(from: CharacterResponse): CharacterModel {
         return CharacterModel(
