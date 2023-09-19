@@ -67,4 +67,18 @@ object DataProvidesModule {
     fun providesMarcelApi(retrofit: Retrofit): MarvelApi {
         return retrofit.create(MarvelApi::class.java)
     }
+
+    @PublicKeyQualifier
+    @Singleton
+    @Provides
+    fun providesPublicKey(): String {
+        return BuildConfig.API_PUBLIC_KEY
+    }
+
+    @PrivateKeyQualifier
+    @Singleton
+    @Provides
+    fun providesPrivateKey(): String {
+        return BuildConfig.API_PRIVATE_KEY
+    }
 }
