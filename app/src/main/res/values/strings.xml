@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">ZeTutorial</string>
     <string name="description">About: </string>
+    <string name="network_error">Houve um erro de conexão!</string>
+    <string name="unexpected_error">Houve um erro inesperado!</string>
 </resources>

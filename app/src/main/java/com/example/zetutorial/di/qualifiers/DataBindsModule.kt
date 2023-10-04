@@ -1,6 +1,7 @@
 package com.example.zetutorial.di.qualifiers
 
 import com.example.zetutorial.data.remote.AuthenticateInterceptorImpl
+import com.example.zetutorial.data.remote.ErrorInterceptorImpl
 import com.example.zetutorial.utils.AppDate
 import com.example.zetutorial.utils.AppDateImpl
 import dagger.Binds
@@ -19,6 +20,13 @@ abstract class DataBindsModule {
     @Binds
     abstract fun bindsAuthenticateInterceptor(
         authenticateInterceptorImpl: AuthenticateInterceptorImpl
+    ): Interceptor
+
+    @ErrorInterceptorQualifier
+    @Singleton
+    @Binds
+    abstract fun bindsErrorInterceptor(
+        errorInterceptorImpl: ErrorInterceptorImpl
     ): Interceptor
 
     @Binds

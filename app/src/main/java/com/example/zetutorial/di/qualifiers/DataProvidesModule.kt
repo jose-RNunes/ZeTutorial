@@ -44,11 +44,13 @@ object DataProvidesModule {
     @Provides
     fun providesOkHttpClient(
         @LoggingInterceptorQualifier loggingInterceptor: Interceptor,
-        @AuthenticateInterceptorQualifier authenticateInterceptor: Interceptor
+        @AuthenticateInterceptorQualifier authenticateInterceptor: Interceptor,
+        @ErrorInterceptorQualifier errorInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
             .addInterceptor(authenticateInterceptor)
+            .addInterceptor(errorInterceptor)
+            .addInterceptor(loggingInterceptor)
             .build()
     }
 
