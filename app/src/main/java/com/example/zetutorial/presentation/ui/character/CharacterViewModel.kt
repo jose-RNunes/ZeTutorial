@@ -5,13 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zetutorial.domain.usecase.FetchCharacterUseCase
-import com.example.zetutorial.presentation.mapper.CharacterModelToUiModel
+import com.example.zetutorial.presentation.mapper.CharacterModelToUiModelMapper
 import com.example.zetutorial.presentation.uimodel.CharacterUiModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CharacterViewModel(
+@HiltViewModel
+class CharacterViewModel @Inject constructor(
     private val fetchCharacters: FetchCharacterUseCase,
-    private val characterModelToUiModel: CharacterModelToUiModel
+    private val characterModelToUiModelMapper: CharacterModelToUiModelMapper
 ) : ViewModel() {
 
     private val _state = MutableLiveData<CharacterState>()
@@ -24,7 +28,7 @@ class CharacterViewModel(
                 fetchCharacters()
             }.onSuccess { characters ->
                 val charactersUi = characters.map { characterModel ->
-                    characterModelToUiModel.converter(characterModel)
+                    characterModelToUiModelMapper.converter(characterModel)
                 }
                 _state.value = getState().setCharacters(charactersUi)
             }.onFailure {

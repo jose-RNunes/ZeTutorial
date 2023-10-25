@@ -37,7 +37,7 @@ class AuthenticateInterceptorImpl @Inject constructor(
 
     private companion object {
         const val TS_KEY = "ts"
-        const val PUBLIC_KEY = "api_key"
+        const val PUBLIC_KEY = "apikey"
         const val HASH_KEY = "hash"
     }
 }

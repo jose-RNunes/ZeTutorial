@@ -5,8 +5,9 @@ import com.example.zetutorial.domain.model.CharacterModel
 import com.example.zetutorial.presentation.uimodel.CharacterUiModel
 import com.example.zetutorial.utils.Mapper
 import com.example.zetutorial.utils.ResourceProvider
+import javax.inject.Inject
 
-class CharacterModelToUiModel(
+class CharacterModelToUiModelMapper @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : Mapper<CharacterModel, CharacterUiModel> {
 
